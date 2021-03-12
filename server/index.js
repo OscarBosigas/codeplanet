@@ -9,12 +9,12 @@ var port = process.env.PORT || 3000;
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.send('Hello World!');
 });
 
 
-app.listen(port, function() {
+app.listen(port, function () {
     console.log('API server started on: ' + port);
 });
 
@@ -35,14 +35,3 @@ estudianteRoutes(app);
 var docenteRoutes = require('./routes/docenteRoutes');
 docenteRoutes(app);
 
-var logicaRoutes = require('./routes/logicaRoutes');
-logicaRoutes(app);
-
-var materiaRoutes = require('./routes/materiaRoutes');
-materiaRoutes(app);
-
-var estructuraRoutes = require('./routes/estructuraRoutes');
-estructuraRoutes(app);
-
-var notaRoutes = require('./routes/notaRoutes');
-notaRoutes(app);
