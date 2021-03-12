@@ -7,8 +7,6 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
-
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
@@ -32,6 +30,18 @@ app.use((req, res, next) => {
 var estudianteRoutes = require('./routes/estudianteRoutes.js');
 estudianteRoutes(app);
 
-var docenteRoutes = require('./routes/docenteRoutes');
-docenteRoutes(app);
+var profesorRoutes = require('./routes/profesorRoutes.js');
+profesorRoutes(app);
+
+var actividadRoutes = require('./routes/actividadRoutes.js');
+actividadRoutes(app);
+
+var cursoRoutes = require('./routes/cursoRoutes.js');
+cursoRoutes(app);
+
+var calificacionRoutes = require('./routes/calificacionRoutes.js');
+calificacionRoutes(app);
+
+var logicaRoutes = require('./routes/logicaRoutes.js');
+logicaRoutes(app);
 

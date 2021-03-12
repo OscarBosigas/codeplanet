@@ -1,21 +1,15 @@
 'use strict';
 
-module.exports = function(app){
+module.exports = function (app) {
     var todoList = require('../controllers/estudianteController');
 
     app.route('/estudiante')
-        .post(todoList.createEstudiante)
+        .post(todoList.crearEstudiante)
         .get(todoList.list_estudiantes);
-    
-    app.route('/estudiante/:doc')
+
+    app.route('/estudiante/:id_estudiante')
         .get(todoList.estudiante)
-        .post(todoList.edit)
-        .delete(todoList.remove);
-
-    app.route('/estudiante/codigo/:codigo')
-        .get(todoList.estudianteByCod);
-
-    app.route('/cambiarContrasena/estudiante/:doc/:nombre/:apellido')
-        .post(todoList.cambiarContrasena);
+        .post(todoList.editar)
+        .delete(todoList.eliminarEstudinate);
 
 };
