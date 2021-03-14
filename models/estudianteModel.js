@@ -1,4 +1,5 @@
 'user strict';
+
 var sql = require('../db');
 
 var Estudiante = function (estudiante) {

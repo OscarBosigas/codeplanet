@@ -1,4 +1,34 @@
 'use strict';
+var bcrypt = require("bcrypt");
+var nodemailer = require("nodemailer");
+const envio = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "pruebasoscarsemillero@gmail.com",
+        pass: "oscar12345*",
+    },
+});
+
+
+let sendMa = (destinatario, titulo, contenido) => {
+    let mensaje = {
+        from: "prebasoscarsemillero@gmail.com",
+        to: destinatario,
+        subject: titulo,
+        text: contenido,
+        html: contenido,
+    };
+    envio.sendMail(mensaje, (err, result) => {
+
+        if (err) {
+            console.log(err)
+            throw new Error("No se pudo enviar el correo");
+
+        }
+        console.log("El mensaje se envio")
+        return true
+    });
+};
 
 var Profesor = require('../models/profesorModel');
 
@@ -15,6 +45,8 @@ exports.crearprofesor = function (req, res) {
         Profesor.crearprofesor(new_profesor, function (err, profesor) {
             if (err)
                 res.send(err);
+            let men = 'Hola ' + new_profesor.nombres_profesor + ' ' + new_profesor.apellidos_profesor + '<br/>le notificamos que se ha creado su cuenta';
+            sendMa(new_Estudiante.email_estudiante, 'Cuenta Creada', men);
             res.json(profesor);
         });
     }
